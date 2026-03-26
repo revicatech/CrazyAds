@@ -2,8 +2,10 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useLang } from '../../context/LanguageContext'
-import { SERVICES } from '../../data/services'
 import { SERVICE_SVGS } from '../../data/serviceSvgs'
+import useFetch from '../../hooks/useFetch'
+import { fetchServices } from '../../services/api'
+import { SERVICES as SERVICES_STATIC } from '../../data/services'
 import '../cssComponents/Services.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -23,18 +25,19 @@ const WHEEL_SVGS = [
 
 export default function Services() {
   const { lang } = useLang()
+  const { data: SERVICES } = useFetch(fetchServices, SERVICES_STATIC)
   const ringRef = useRef(null)
   const vpRef = useRef(null)
 
   useEffect(() => {
     const ringEl = ringRef.current
     const vp = vpRef.current
-    if (!ringEl || !vp) return
+    if (!ringEl || !vp || SERVICES.length === 0) return
 
     const R = 900
     const CARD_W = 340
     const CARD_H = 338
-    const N_CARDS = 9
+    const N_CARDS = SERVICES.length
     const STEP = 28
     const AUTO_SPD = 9
     const DRAG_SENS = 0.28
@@ -172,7 +175,7 @@ export default function Services() {
       window.removeEventListener('touchend', onTouchEnd)
       ringEl.innerHTML = ''
     }
-  }, [lang])
+  }, [lang, SERVICES])
 
   return (
     <section id="services">
@@ -193,7 +196,7 @@ export default function Services() {
       {/* Mobile 2-col grid */}
       <div className="svc-mobile-grid">
         {SERVICES.map((svc, i) => (
-          <div className="svc-mobile-card" key={svc.id}>
+          <div className="svc-mobile-card" key={svc._id}>
             <div className="svc-mobile-card-img">
               {SERVICE_SVGS[i]({ uid: `m${i}` })}
             </div>

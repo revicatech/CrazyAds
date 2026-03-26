@@ -1,4 +1,6 @@
-import { INDUSTRIES, INDUSTRY_COLORS } from '../../data/industries'
+import { INDUSTRY_COLORS, INDUSTRIES as INDUSTRIES_STATIC } from '../../data/industries'
+import useFetch from '../../hooks/useFetch'
+import { fetchIndustries } from '../../services/api'
 
 const RADIUS = 300
 
@@ -7,6 +9,7 @@ const RADIUS = 300
  * cardStates: [{ angle, scale, opacity, isActive }] from useIndustriesCarousel
  */
 export default function RadialCards({ cardStates }) {
+  const { data: INDUSTRIES } = useFetch(fetchIndustries, INDUSTRIES_STATIC)
   return (
     <div className="relative w-full h-full">
       {INDUSTRIES.map((ind, i) => {
@@ -18,7 +21,7 @@ export default function RadialCards({ cardStates }) {
 
         return (
           <div
-            key={ind.id}
+            key={ind._id}
             className="absolute top-1/2 left-1/2 w-48 rounded-2xl p-5 flex flex-col gap-2 cursor-pointer transition-shadow duration-300"
             style={{
               transform:  `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${state.scale})`,

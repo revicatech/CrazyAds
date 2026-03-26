@@ -4,7 +4,9 @@ import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import SectionHeading from '../components/ui/SectionHeading'
 import Badge from '../components/ui/Badge'
-import { PORTFOLIO, PORTFOLIO_CATEGORIES } from '../data/portfolio'
+import useFetch from '../hooks/useFetch'
+import { fetchPortfolio, fetchPortfolioCategories } from '../services/api'
+import { PORTFOLIO as PORTFOLIO_STATIC, PORTFOLIO_CATEGORIES as PORTFOLIO_CATEGORIES_STATIC } from '../data/portfolio'
 
 function PortfolioGridCard({ item, index }) {
   const { ref, isVisible } = useRevealOnScroll(0.05)
@@ -65,6 +67,9 @@ export default function PortfolioPage() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
   const [activeCategory, setActiveCategory] = useState('All')
+  const { data: PORTFOLIO } = useFetch(fetchPortfolio, PORTFOLIO_STATIC)
+  const { data: apiCategories } = useFetch(fetchPortfolioCategories, PORTFOLIO_CATEGORIES_STATIC)
+  const PORTFOLIO_CATEGORIES = [{ en: 'All', ar: 'الكل' }, ...apiCategories]
 
   const filtered = activeCategory === 'All'
     ? PORTFOLIO
@@ -112,7 +117,7 @@ export default function PortfolioPage() {
       <section className="px-6 pb-24 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {filtered.map((item, i) => (
-            <PortfolioGridCard key={item.id} item={item} index={i} />
+            <PortfolioGridCard key={item._id} item={item} index={i} />
           ))}
         </div>
 

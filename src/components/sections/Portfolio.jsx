@@ -4,7 +4,9 @@ import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import SectionHeading from '../ui/SectionHeading'
 import Badge from '../ui/Badge'
-import { PORTFOLIO } from '../../data/portfolio'
+import useFetch from '../../hooks/useFetch'
+import { fetchPortfolio } from '../../services/api'
+import { PORTFOLIO as PORTFOLIO_STATIC } from '../../data/portfolio'
 
 function PortfolioCard({ item, index }) {
   const { ref, isVisible } = useRevealOnScroll(0.1)
@@ -64,6 +66,7 @@ function PortfolioCard({ item, index }) {
 export default function Portfolio() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
+  const { data: PORTFOLIO } = useFetch(fetchPortfolio, PORTFOLIO_STATIC)
   const portfolioItems = PORTFOLIO.slice(0, 4) // Show only first 4 items for preview
   return (
     <section id="portfolio" className="py-24 px-6 max-w-[1400px] mx-auto">
@@ -83,7 +86,7 @@ export default function Portfolio() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {portfolioItems.map((item, i) => (
-          <PortfolioCard key={item.id} item={item} index={i} />
+          <PortfolioCard key={item._id} item={item} index={i} />
         ))}
       </div>
     </section>

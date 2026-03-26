@@ -2,7 +2,9 @@ import { useLang } from '../../context/LanguageContext'
 import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import SectionHeading from '../ui/SectionHeading'
-import { TEAM } from '../../data/team'
+import useFetch from '../../hooks/useFetch'
+import { fetchTeam } from '../../services/api'
+import { TEAM as TEAM_STATIC } from '../../data/team'
 
 function TeamCard({ member, index, lang }) {
   const { ref, isVisible } = useRevealOnScroll(0.1)
@@ -32,6 +34,7 @@ function TeamCard({ member, index, lang }) {
 export default function Team() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
+  const { data: TEAM } = useFetch(fetchTeam, TEAM_STATIC)
 
   return (
     <section id="team" className="py-24 px-6 max-w-[1400px] mx-auto">
@@ -47,7 +50,7 @@ export default function Team() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {TEAM.map((member, i) => (
-          <TeamCard key={member.id} member={member} index={i} lang={lang} />
+          <TeamCard key={member._id} member={member} index={i} lang={lang} />
         ))}
       </div>
     </section>

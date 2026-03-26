@@ -1,18 +1,21 @@
 import { useRef, useCallback, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { usePolarCarousel } from '../../hooks/usePolarCarousel'
-import { SERVICES } from '../../data/services'
 import { SERVICE_SVGS } from '../../data/serviceSvgs'
 import { useLang } from '../../context/LanguageContext'
+import useFetch from '../../hooks/useFetch'
+import { fetchServices } from '../../services/api'
+import { SERVICES as SERVICES_STATIC } from '../../data/services'
 
 const RADIUS = 900
-const SPREAD = 360 / SERVICES.length
 
 const SHADOW_NORMAL = '0 2px 8px rgba(0,0,0,.06),0 8px 32px rgba(0,0,0,.07),0 24px 64px rgba(0,0,0,.05),inset 0 0 0 1px rgba(0,0,0,.06)'
 const SHADOW_HOVER  = '0 4px 12px rgba(0,0,0,.10),0 16px 48px rgba(0,0,0,.12),0 40px 80px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.10)'
 
 export default function PolarWheel() {
   const { lang } = useLang()
+  const { data: SERVICES } = useFetch(fetchServices, SERVICES_STATIC)
+  const SPREAD = SERVICES.length ? 360 / SERVICES.length : 40
   const outerRefs = useRef([])
   const stageRef  = useRef(null)
 
@@ -33,7 +36,7 @@ export default function PolarWheel() {
       el.style.opacity   = opacity
       el.style.zIndex    = zIndex
     })
-  }, [])
+  }, [SERVICES, SPREAD])
 
   const wheelRef = usePolarCarousel(SERVICES.length, onFrame)
 
@@ -68,7 +71,7 @@ export default function PolarWheel() {
         {SERVICES.map((svc, i) => (
           /* Outer: RAF controls position + depth scale */
           <div
-            key={svc.id}
+            key={svc._id}
             ref={el => (outerRefs.current[i] = el)}
             className="absolute"
             style={{ top: '50%', left: '50%', willChange: 'transform, opacity' }}

@@ -2,14 +2,16 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useLang } from '../../context/LanguageContext'
 import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
-import { INDUSTRIES } from '../../data/industries'
+import useFetch from '../../hooks/useFetch'
+import { fetchIndustries } from '../../services/api'
+import { INDUSTRIES as INDUSTRIES_STATIC } from '../../data/industries'
 import '../cssComponents/Industries.css'
-
-const CARD_COUNT = INDUSTRIES.length
-const ANGLE_STEP = 360 / CARD_COUNT // 45deg per card
 
 export default function Industries() {
   const { lang } = useLang()
+  const { data: INDUSTRIES } = useFetch(fetchIndustries, INDUSTRIES_STATIC)
+  const CARD_COUNT = INDUSTRIES.length || 1
+  const ANGLE_STEP = 360 / CARD_COUNT
   const { ref: sectionRef, isVisible: sectionVisible } = useRevealOnScroll(0.05)
   const [currentAngle, setCurrentAngle] = useState(0)
   const [isPaused, setIsPaused] = useState(false)

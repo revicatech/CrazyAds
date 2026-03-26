@@ -2,7 +2,9 @@ import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import SectionHeading from '../components/ui/SectionHeading'
-import { INDUSTRIES } from '../data/industries'
+import useFetch from '../hooks/useFetch'
+import { fetchIndustries } from '../services/api'
+import { INDUSTRIES as INDUSTRIES_STATIC } from '../data/industries'
 
 function IndustryCard({ industry, index }) {
   const { ref, isVisible } = useRevealOnScroll(0.05)
@@ -74,6 +76,7 @@ function IndustryCard({ industry, index }) {
 export default function IndustriesPage() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
+  const { data: INDUSTRIES } = useFetch(fetchIndustries, INDUSTRIES_STATIC)
 
   return (
     <main className="min-h-screen bg-white">
@@ -95,7 +98,7 @@ export default function IndustriesPage() {
       <section className="px-6 pb-24 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {INDUSTRIES.map((ind, i) => (
-            <IndustryCard key={ind.id} industry={ind} index={i} />
+            <IndustryCard key={ind._id} industry={ind} index={i} />
           ))}
         </div>
       </section>

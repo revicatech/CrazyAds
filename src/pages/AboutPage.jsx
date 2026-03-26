@@ -2,8 +2,10 @@ import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import SectionHeading from '../components/ui/SectionHeading'
-import { TEAM } from '../data/team'
-import { WHY_US } from '../data/whyUs'
+import useFetch from '../hooks/useFetch'
+import { fetchTeam, fetchWhyUs } from '../services/api'
+import { TEAM as TEAM_STATIC } from '../data/team'
+import { WHY_US as WHY_US_STATIC } from '../data/whyUs'
 
 const COUNTERS = [
   { key: 'about_years',     value: 14,  suffix: '+' },
@@ -240,6 +242,8 @@ export default function AboutPage() {
   const { ref: storyRef, isVisible: storyVisible } = useRevealOnScroll()
   const { ref: teamRef, isVisible: teamVisible } = useRevealOnScroll()
   const { ref: whyRef, isVisible: whyVisible } = useRevealOnScroll()
+  const { data: TEAM } = useFetch(fetchTeam, TEAM_STATIC)
+  const { data: WHY_US } = useFetch(fetchWhyUs, WHY_US_STATIC)
 
   return (
     <main className="min-h-screen bg-white">
@@ -333,7 +337,7 @@ export default function AboutPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           {WHY_US.map((item, i) => (
-            <WhyUsCard key={item.id} item={item} index={i} lang={lang} />
+            <WhyUsCard key={item._id} item={item} index={i} lang={lang} />
           ))}
         </div>
       </section>
@@ -351,7 +355,7 @@ export default function AboutPage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {TEAM.map((member, i) => (
-            <TeamCard key={member.id} member={member} index={i} />
+            <TeamCard key={member._id} member={member} index={i} />
           ))}
         </div>
       </section>

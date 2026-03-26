@@ -2,7 +2,8 @@ import { useParams, Link } from 'react-router-dom'
 import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
-import { CASE_STUDIES } from '../data/caseStudies'
+import { useState, useEffect } from 'react'
+import { fetchCaseStudyBySlug } from '../services/api'
 
 function MetricBlock({ num, label }) {
   return (
@@ -30,8 +31,20 @@ function Section({ title, children, delay = 0 }) {
 export default function CaseStudyDetail() {
   const { slug } = useParams()
   const { lang } = useLang()
-  const study = CASE_STUDIES.find(c => c.slug === slug)
+  const [study, setStudy] = useState(null)
+  const [loading, setLoading] = useState(true)
   const { ref: heroRef, isVisible: heroVisible } = useRevealOnScroll(0.05)
+
+  useEffect(() => {
+    fetchCaseStudyBySlug(slug)
+      .then(setStudy)
+      .catch(() => setStudy(null))
+      .finally(() => setLoading(false))
+  }, [slug])
+
+  if (loading) {
+    return <main className="min-h-screen flex items-center justify-center"><p className="text-black/40 text-lg">Loading...</p></main>
+  }
 
   if (!study) {
     return (

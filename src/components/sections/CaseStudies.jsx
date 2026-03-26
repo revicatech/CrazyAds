@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom'
 import { useLang } from '../../context/LanguageContext'
 import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
-import { CASE_STUDIES } from '../../data/caseStudies'
+import useFetch from '../../hooks/useFetch'
+import { fetchCaseStudies } from '../../services/api'
+import { CASE_STUDIES as CASE_STUDIES_STATIC } from '../../data/caseStudies'
 import '../cssComponents/CaseStudies.css'
 
 const METRIC_LABEL_KEYS = {
@@ -45,6 +47,7 @@ function CaseRow({ item, lang }) {
 export default function CaseStudies() {
   const { lang } = useLang()
   const { ref: headerRef, isVisible: headerVisible } = useRevealOnScroll(0.1)
+  const { data: CASE_STUDIES } = useFetch(fetchCaseStudies, CASE_STUDIES_STATIC)
 
   return (
     <section className="case-studies-section" id="cases">
@@ -57,7 +60,7 @@ export default function CaseStudies() {
       </div>
 
       {CASE_STUDIES.map(item => (
-        <CaseRow key={item.id} item={item} lang={lang} />
+        <CaseRow key={item._id} item={item} lang={lang} />
       ))}
     </section>
   )

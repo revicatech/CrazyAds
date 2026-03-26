@@ -4,7 +4,9 @@ import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import SectionHeading from '../components/ui/SectionHeading'
-import { CASE_STUDIES, CASE_CATEGORIES } from '../data/caseStudies'
+import useFetch from '../hooks/useFetch'
+import { fetchCaseStudies, fetchCaseCategories } from '../services/api'
+import { CASE_STUDIES as CASE_STUDIES_STATIC, CASE_CATEGORIES as CASE_CATEGORIES_STATIC } from '../data/caseStudies'
 
 function CaseCard({ item, index }) {
   const { ref, isVisible } = useRevealOnScroll(0.05)
@@ -78,6 +80,9 @@ export default function CaseStudiesPage() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
   const [activeCategory, setActiveCategory] = useState('All')
+  const { data: CASE_STUDIES } = useFetch(fetchCaseStudies, CASE_STUDIES_STATIC)
+  const { data: apiCategories } = useFetch(fetchCaseCategories, CASE_CATEGORIES_STATIC)
+  const CASE_CATEGORIES = [{ en: 'All', ar: 'الكل' }, ...apiCategories]
 
   const filtered = activeCategory === 'All'
     ? CASE_STUDIES
@@ -125,7 +130,7 @@ export default function CaseStudiesPage() {
       <section className="px-6 pb-24 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((item, i) => (
-            <CaseCard key={item.id} item={item} index={i} />
+            <CaseCard key={item._id} item={item} index={i} />
           ))}
         </div>
 

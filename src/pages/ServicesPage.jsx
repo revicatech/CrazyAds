@@ -2,8 +2,10 @@ import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import SectionHeading from '../components/ui/SectionHeading'
-import { SERVICES } from '../data/services'
 import { SERVICE_SVGS } from '../data/serviceSvgs'
+import useFetch from '../hooks/useFetch'
+import { fetchServices } from '../services/api'
+import { SERVICES as SERVICES_STATIC } from '../data/services'
 
 function ServiceCard({ service, index }) {
   const { ref, isVisible } = useRevealOnScroll(0.05)
@@ -61,6 +63,7 @@ function ServiceCard({ service, index }) {
 export default function ServicesPage() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
+  const { data: SERVICES } = useFetch(fetchServices, SERVICES_STATIC)
 
   return (
     <main className="min-h-screen bg-white">

@@ -3,7 +3,9 @@ import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import SectionHeading from '../ui/SectionHeading'
 import Badge from '../ui/Badge'
-import { WHY_US } from '../../data/whyUs'
+import useFetch from '../../hooks/useFetch'
+import { fetchWhyUs } from '../../services/api'
+import { WHY_US as WHY_US_STATIC } from '../../data/whyUs'
 
 function WhyCard({ card, index, lang }) {
   const TOP_OFFSETS = [0, 60, 120, 180, 240]
@@ -56,6 +58,7 @@ function WhyCard({ card, index, lang }) {
 export default function WhyUs() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
+  const { data: WHY_US } = useFetch(fetchWhyUs, WHY_US_STATIC)
 
   return (
     <section id="why" className="py-24 px-6 max-w-[1400px] mx-auto">
@@ -74,7 +77,7 @@ export default function WhyUs() {
       {/* Stacked sticky cards */}
       <div className="flex flex-col gap-4">
         {WHY_US.map((card, i) => (
-          <WhyCard key={card.id} card={card} index={i} lang={lang} />
+          <WhyCard key={card._id} card={card} index={i} lang={lang} />
         ))}
       </div>
     </section>
