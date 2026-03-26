@@ -25,7 +25,7 @@ export default function Home() {
         <WhyUs />
         <About />
         <EinsteinOrbit />
-        <Industries />
+        {/* <Industries /> */}
         <Team />
         <Contact />
       </div>
