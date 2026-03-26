@@ -1,0 +1,423 @@
+/* ═══════ INDUSTRIES — REDESIGNED ═══════ */
+
+.industries-section {
+  position: relative;
+  background: #0a0a0a;
+  padding: clamp(80px, 12vh, 160px) 0;
+  overflow: hidden;
+}
+
+/* Subtle background texture */
+.industries-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+/* Ambient glow */
+.industries-glow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(220, 30, 30, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.industries-header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 60px);
+  margin-bottom: clamp(48px, 6vh, 80px);
+}
+
+.industries-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #dc1e1e;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.industries-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: #dc1e1e;
+}
+
+.industries-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 7vw, 100px);
+  color: #fff;
+  line-height: 0.92;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.industries-title em {
+  font-style: normal;
+  color: #dc1e1e;
+}
+
+.industries-subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── Grid ── */
+.industries-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4vw, 60px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+/* ── Card ── */
+.ind-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease;
+}
+
+.ind-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(220, 30, 30, 0.08);
+}
+
+/* Make first and last cards span wider */
+.ind-card:nth-child(1) {
+  grid-column: span 2;
+  min-height: 420px;
+}
+
+.ind-card:nth-child(5) {
+  grid-column: span 2;
+  min-height: 420px;
+}
+
+/* ── Card image ── */
+.ind-card-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ind-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s ease;
+  filter: saturate(0.3) brightness(0.5);
+}
+
+.ind-card:hover .ind-card-img img {
+  transform: scale(1.08);
+  filter: saturate(0.8) brightness(0.4);
+}
+
+/* Gradient overlay */
+.ind-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.ind-card:hover .ind-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.98) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* Red accent line at top of card */
+.ind-card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #dc1e1e;
+  z-index: 3;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ind-card:hover .ind-card-accent {
+  transform: scaleX(1);
+}
+
+/* ── Card content ── */
+.ind-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ind-card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  color: rgba(255, 255, 255, 0.04);
+  line-height: 1;
+  position: absolute;
+  top: -56px;
+  right: 28px;
+  transition: color 0.5s ease;
+}
+
+.ind-card:hover .ind-card-num {
+  color: rgba(220, 30, 30, 0.12);
+}
+
+.ind-card-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(22px, 2vw, 32px);
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.ind-card:hover .ind-card-name {
+  color: #dc1e1e;
+}
+
+.ind-card-headline {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.ind-card:hover .ind-card-headline {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Description - slides up on hover */
+.ind-card-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease 0.1s,
+              transform 0.4s ease 0.1s;
+}
+
+.ind-card:hover .ind-card-desc {
+  max-height: 120px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service tags */
+.ind-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+              opacity 0.4s ease 0.15s;
+}
+
+.ind-card:hover .ind-card-tags {
+  max-height: 80px;
+  opacity: 1;
+}
+
+.ind-card-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.ind-card:hover .ind-card-tag {
+  border-color: rgba(220, 30, 30, 0.3);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ── Arrow icon on hover ── */
+.ind-card-arrow {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px) rotate(-45deg);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ind-card-arrow svg {
+  width: 14px;
+  height: 14px;
+  stroke: #fff;
+  stroke-width: 2;
+  fill: none;
+}
+
+.ind-card:hover .ind-card-arrow {
+  opacity: 1;
+  transform: translateY(0) rotate(-45deg);
+  border-color: rgba(220, 30, 30, 0.4);
+}
+
+/* ── Scroll reveal animation ── */
+.ind-card-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ind-card-reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Bottom stats bar ── */
+.industries-stats {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vh, 80px) clamp(24px, 4vw, 60px) 0;
+  display: flex;
+  justify-content: center;
+  gap: clamp(32px, 4vw, 64px);
+}
+
+.industries-stat {
+  text-align: center;
+}
+
+.industries-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 4vw, 56px);
+  color: #dc1e1e;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.industries-stat-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media (max-width: 1024px) {
+  .industries-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ind-card:nth-child(1),
+  .ind-card:nth-child(5) {
+    grid-column: span 1;
+    min-height: 380px;
+  }
+
+  .ind-card {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 640px) {
+  .industries-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ind-card,
+  .ind-card:nth-child(1),
+  .ind-card:nth-child(5) {
+    min-height: 280px;
+    grid-column: span 1;
+  }
+
+  .ind-card-content {
+    padding: 20px;
+  }
+
+  .ind-card-num {
+    font-size: 56px;
+    top: -44px;
+    right: 20px;
+  }
+
+  /* Show desc always on mobile since no hover */
+  .ind-card-desc {
+    max-height: 100px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .ind-card-tags {
+    max-height: 60px;
+    opacity: 1;
+  }
+
+  .industries-stats {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .industries-stat {
+    flex: 0 0 40%;
+  }
+}

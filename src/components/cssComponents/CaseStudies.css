@@ -1,0 +1,150 @@
+.case-studies-section {
+  background: #ffffff;
+  padding: 0;
+}
+
+.case-header-row {
+  padding: 80px 48px 0;
+}
+
+.cs-section-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #dc0000;
+  margin-bottom: 16px;
+}
+
+.cs-portfolio-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 9vw, 130px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+}
+
+/* ── Reveal animation (mirrors .reveal-up / .reveal-up.in) ── */
+.cs-reveal-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cs-reveal-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Case rows ── */
+.case-row {
+  display: flex;
+  align-items: stretch;
+  min-height: 420px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: background 0.5s;
+}
+
+.case-row:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Even child = row-reverse (header-row is child 1, so first case-row is child 2 = even) */
+.case-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.case-image {
+  width: 40%;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.case-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(50%);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s;
+}
+
+.case-row:hover .case-image img {
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.case-content {
+  flex: 1;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.case-tag {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #dc0000;
+  margin-bottom: 16px;
+}
+
+.case-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.case-desc {
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 36px;
+}
+
+.case-metrics {
+  display: flex;
+  gap: 48px;
+}
+
+.metric-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  color: #dc0000;
+  line-height: 0.9;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: #999999;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .case-row,
+  .case-row:nth-child(even) {
+    flex-direction: column !important;
+  }
+  .case-image {
+    width: 100% !important;
+    height: 220px;
+  }
+  .case-content {
+    padding: 28px 20px !important;
+  }
+  .case-metrics {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .case-header-row {
+    padding: 48px 20px 0;
+  }
+}

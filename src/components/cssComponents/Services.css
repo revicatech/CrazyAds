@@ -1,0 +1,285 @@
+/* ═══════ SERVICES ═══════ */
+#services {
+  background: #ffffff;
+  padding: 100px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+#services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23f)'/%3E%3C/svg%3E");
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.services-header .section-label-srv {
+  font-size: 10px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, .3);
+  display: block;
+  margin-bottom: 18px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+}
+
+.services-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 11vw, 160px);
+  color: #111;
+  line-height: .88;
+  letter-spacing: -.02em;
+}
+
+.services-header h2 em {
+  font-style: italic;
+  font-size: .52em;
+  color: #dc1e1e;
+  display: block;
+  letter-spacing: normal;
+}
+
+.services-header::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #111;
+  margin: 22px auto 0;
+  opacity: .12;
+}
+
+/* ── wheel viewport (the mask) ── */
+.svc-wheel-viewport {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  z-index: 2;
+  cursor: grab;
+}
+
+.svc-wheel-viewport:active {
+  cursor: grabbing;
+}
+
+.svc-wheel-viewport::before,
+.svc-wheel-viewport::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 180px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.svc-wheel-viewport::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+
+.svc-wheel-viewport::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+/* ring div */
+#svcRing {
+  position: absolute;
+  width: 1800px;
+  height: 1800px;
+  left: 50%;
+  margin-left: -900px;
+  top: 320px;
+  will-change: transform;
+}
+
+/* ── polaroid card ── */
+.svc-card {
+  position: absolute;
+  width: 340px;
+  background: #ffffff;
+  padding: 10px 10px 62px;
+  border-radius: 1px;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, .06),
+    0 8px 32px rgba(0, 0, 0, .07),
+    0 24px 64px rgba(0, 0, 0, .05),
+    inset 0 0 0 1px rgba(0, 0, 0, .06);
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+}
+
+.svc-card:hover {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, .1),
+    0 16px 48px rgba(0, 0, 0, .12),
+    0 40px 80px rgba(0, 0, 0, .08),
+    inset 0 0 0 1px rgba(0, 0, 0, .1);
+}
+
+.svc-card-img {
+  width: 100%;
+  aspect-ratio: 1/.62;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1px;
+}
+
+.svc-card-img svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform .55s cubic-bezier(.25, .46, .45, .94);
+}
+
+.svc-card:hover .svc-card-img svg {
+  transform: scale(1.065);
+}
+
+.svc-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-top: 1px solid rgba(0, 0, 0, .06);
+}
+
+.svc-card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 10px;
+  color: rgba(0, 0, 0, .3);
+  letter-spacing: .3em;
+  line-height: 1;
+}
+
+.svc-card-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 19px;
+  color: #111;
+  letter-spacing: .04em;
+  line-height: 1;
+  text-align: center;
+}
+
+/* ── SERVICES MOBILE GRID (hidden on desktop) ── */
+.svc-mobile-grid {
+  display: none;
+}
+
+/* ═══════ RESPONSIVE — TABLET/MOBILE (≤860px) ═══════ */
+@media (max-width: 860px) {
+  .svc-wheel-viewport {
+    display: none;
+  }
+
+  #services {
+    padding: 80px 0 60px;
+  }
+
+  .svc-mobile-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 24px;
+    margin-top: 0;
+  }
+}
+
+/* ═══════ RESPONSIVE — MOBILE (≤768px) ═══════ */
+@media (max-width: 768px) {
+  .services-header {
+    padding: 0 20px;
+  }
+
+  .services-header h2 {
+    font-size: clamp(52px, 13vw, 100px);
+  }
+
+  .svc-wheel-viewport {
+    display: none;
+  }
+
+  .svc-mobile-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 0 20px;
+    margin-top: 0;
+  }
+
+  .svc-mobile-card {
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .07);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+  }
+
+  .svc-mobile-card-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+
+  .svc-mobile-card-img svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .svc-mobile-card-label {
+    padding: 12px 14px;
+    border-top: 1px solid rgba(0, 0, 0, .06);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .svc-mobile-card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    color: rgba(0, 0, 0, .3);
+    letter-spacing: .3em;
+  }
+
+  .svc-mobile-card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    color: #111;
+    letter-spacing: .04em;
+    line-height: 1;
+  }
+}
+
+/* ═══════ RESPONSIVE — SMALL MOBILE (≤480px) ═══════ */
+@media (max-width: 480px) {
+  .services-header h2 {
+    font-size: clamp(44px, 14vw, 72px);
+  }
+
+  .svc-mobile-grid {
+    gap: 10px;
+    padding: 0 16px;
+  }
+}

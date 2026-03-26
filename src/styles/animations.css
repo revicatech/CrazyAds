@@ -1,0 +1,81 @@
+/* ============================================
+   Crazy Ads — Custom Keyframe Animations
+   (Only things Tailwind utilities can't express)
+   ============================================ */
+
+/* Liquid tube fill */
+@keyframes liquidRise {
+  from { height: 0%; }
+  to   { height: var(--fill-pct, 0%); }
+}
+
+/* Tube bubble float */
+@keyframes bubbleFloat {
+  0%   { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-60px) scale(0.4); opacity: 0; }
+}
+
+/* Orbital rotation */
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Counter orbit depth pulse */
+@keyframes depthPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+/* Marquee scroll */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Particle fade out */
+@keyframes particleFade {
+  0%   { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+/* Scroll hint bounce */
+@keyframes scrollHint {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+/* Reveal from below */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reveal from left */
+@keyframes revealLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Reveal from right */
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Utility classes */
+.animate-marquee-left  { animation: marqueeLeft  var(--marquee-speed, 30s) linear infinite; }
+.animate-marquee-right { animation: marqueeRight var(--marquee-speed, 30s) linear infinite; }
+.animate-scroll-hint   { animation: scrollHint 1.8s ease-in-out infinite; }
+.animate-bubble        { animation: bubbleFloat var(--bubble-dur, 2s) ease-out forwards; }
+
+.reveal-up    { opacity: 0; }
+.reveal-up.is-visible    { animation: revealUp    0.7s ease forwards; }
+.reveal-left.is-visible  { animation: revealLeft  0.7s ease forwards; }
+.reveal-right.is-visible { animation: revealRight 0.7s ease forwards; }

@@ -1,0 +1,121 @@
+export const INDUSTRIES = [
+  {
+    id: 0,
+    name: 'Restaurants & F&B',
+    nameAr: 'المطاعم والأغذية',
+    headlineEn: 'We Serve Every Taste',
+    headlineEmEn: 'Every Taste',
+    colorIndex: 0,
+    descEn: 'From fast-casual chains to fine dining, we craft campaigns that fill seats and build cult followings. Menu launches, delivery app strategies, franchise growth — we know what makes people hungry.',
+    descAr: 'من سلاسل المطاعم السريعة إلى المطاعم الفاخرة، نصمم حملات تملأ المقاعد وتبني جمهوراً مخلصاً.',
+    services: ['Brand Identity', 'Social Media', 'Menu Design', 'Packaging', 'Franchise Marketing'],
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 1,
+    name: 'Beauty & Cosmetics',
+    nameAr: 'الجمال ومستحضرات التجميل',
+    headlineEn: 'Amplify Your Beauty',
+    headlineEmEn: 'Your Beauty',
+    colorIndex: 1,
+    descEn: 'We help beauty brands stand out in a saturated market. Influencer campaigns, product launches, e-commerce optimization, and visual storytelling that makes people stop scrolling.',
+    descAr: 'نساعد علامات التجميل على التميز في سوق مشبع. حملات مؤثرين، إطلاق منتجات، وسرد بصري يوقف التمرير.',
+    services: ['Influencer Marketing', 'Product Launch', 'E-commerce', 'Video Production', 'Packaging'],
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 2,
+    name: 'Education',
+    nameAr: 'التعليم',
+    headlineEn: 'Build Future Minds',
+    headlineEmEn: 'Future Minds',
+    colorIndex: 2,
+    descEn: 'Universities, schools, and EdTech platforms trust us to drive enrollment and build institutional brands. We turn academic excellence into compelling stories.',
+    descAr: 'الجامعات والمدارس ومنصات التعليم التقني تثق بنا لزيادة التسجيل وبناء علامات مؤسسية قوية.',
+    services: ['Enrollment Campaigns', 'Brand Positioning', 'Digital Ads', 'Event Marketing', 'Content Strategy'],
+    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 3,
+    name: 'Real Estate & Construction',
+    nameAr: 'العقارات والبناء',
+    headlineEn: 'Elevate Every Space',
+    headlineEmEn: 'Every Space',
+    colorIndex: 3,
+    descEn: 'We sell visions, not just properties. CGI renders, cinematic walkthroughs, launch events, and lead-generation machines that move units before the paint dries.',
+    descAr: 'نبيع رؤى، لا مجرد عقارات. عروض ثلاثية الأبعاد، جولات سينمائية، فعاليات إطلاق، ومحركات توليد عملاء.',
+    services: ['CGI & 3D Renders', 'Sales Collateral', 'Launch Events', 'Lead Generation', 'Billboard Campaigns'],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 4,
+    name: 'Healthcare',
+    nameAr: 'الرعاية الصحية',
+    headlineEn: 'Care That Converts',
+    headlineEmEn: 'Converts',
+    colorIndex: 4,
+    descEn: 'Hospitals, clinics, and health-tech brands need trust and clarity. We build campaigns that educate, reassure, and drive patient acquisition — all while staying compliant.',
+    descAr: 'المستشفيات والعيادات وشركات التكنولوجيا الصحية تحتاج الثقة والوضوح. نبني حملات تثقّف وتطمئن وتجذب المرضى.',
+    services: ['Patient Acquisition', 'Trust Campaigns', 'Digital Presence', 'Health Content', 'Compliance-Ready Ads'],
+    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 5,
+    name: 'Fashion & Apparel',
+    nameAr: 'الأزياء والملابس',
+    headlineEn: 'Style That Sells',
+    headlineEmEn: 'Sells',
+    colorIndex: 1,
+    descEn: 'Lookbooks, runway coverage, influencer seeding, and e-commerce conversion — we help fashion brands move from aspiration to transaction.',
+    descAr: 'كتب الأزياء، تغطية العروض، حملات المؤثرين، وتحسين التجارة الإلكترونية — نساعد علامات الأزياء على التحول من الطموح إلى البيع.',
+    services: ['Lookbook Production', 'Influencer Seeding', 'E-commerce Strategy', 'Runway Events', 'Social Content'],
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 6,
+    name: 'Government & Public Services',
+    nameAr: 'الحكومة والخدمات العامة',
+    headlineEn: 'Service That Scales',
+    headlineEmEn: 'That Scales',
+    colorIndex: 2,
+    descEn: 'Public-sector campaigns that reach millions. Awareness drives, national branding initiatives, and citizen engagement programs built for impact at scale.',
+    descAr: 'حملات القطاع العام التي تصل للملايين. حملات توعية، مبادرات هوية وطنية، وبرامج مشاركة المواطنين.',
+    services: ['Awareness Campaigns', 'National Branding', 'Public Events', 'Bilingual Content', 'OOH Networks'],
+    image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=900',
+  },
+  {
+    id: 7,
+    name: 'Specialized Sectors',
+    nameAr: 'القطاعات المتخصصة',
+    headlineEn: 'Solutions Without Limits',
+    headlineEmEn: 'Without Limits',
+    colorIndex: 0,
+    descEn: 'Oil & gas, logistics, tech startups, sports, entertainment — whatever your niche, we bring the same obsessive energy. No sector is too complex when strategy leads.',
+    descAr: 'النفط والغاز، اللوجستيات، الشركات الناشئة، الرياضة، الترفيه — مهما كان تخصصك، نقدم نفس الطاقة المهووسة.',
+    services: ['Sector Research', 'Custom Strategy', 'B2B Campaigns', 'Trade Shows', 'Thought Leadership'],
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=900',
+  },
+]
+
+// Color palette per colorIndex
+export const INDUSTRY_COLORS = [
+  { bg: 'linear-gradient(135deg,#dc1e1e,#1a0000)', text: '#fff' }, // 0 red/dark
+  { bg: 'linear-gradient(135deg,#e91e8c,#3d0030)', text: '#fff' }, // 1 pink
+  { bg: 'linear-gradient(135deg,#444,#111)',        text: '#fff' }, // 2 gray
+  { bg: 'linear-gradient(135deg,#b01010,#0a0a0a)', text: '#fff' }, // 3 dark red
+  { bg: 'linear-gradient(135deg,#8b0000,#1a1a1a)', text: '#fff' }, // 4 deep red
+]
+
+// Orbit idea bubbles for EinsteinOrbit section
+export const ORBIT_IDEAS = [
+  { icon: '⚡', label: 'Creativity',   speed: 0.4,  radius: 120, offset: 0 },
+  { icon: '🚀', label: 'Speed',        speed: 0.6,  radius: 120, offset: 60 },
+  { icon: '🌎', label: 'Innovation',   speed: 0.5,  radius: 120, offset: 120 },
+  { icon: '🌐', label: 'Global Reach', speed: 0.35, radius: 200, offset: 30 },
+  { icon: '🎉', label: 'Impact',       speed: 0.45, radius: 200, offset: 90 },
+  { icon: '💡', label: 'Bold Ideas',   speed: 0.55, radius: 200, offset: 150 },
+  { icon: '🌎', label: 'Strategy',     speed: 0.3,  radius: 280, offset: 45 },
+  { icon: '🔥', label: 'Passion',      speed: 0.5,  radius: 280, offset: 105 },
+  { icon: '👤', label: 'Culture',      speed: 0.4,  radius: 280, offset: 165 },
+  { icon: '👏', label: 'Excellence',   speed: 0.35, radius: 280, offset: 225 },
+]

@@ -1,0 +1,75 @@
+export const CASE_STUDIES = [
+  {
+    id: 1,
+    slug: 'al-rajhi-the-future-is-ours',
+    title: 'AL RAJHI — THE FUTURE IS OURS',
+    tag: 'Banking · KSA · 2024',
+    category: { en: 'Banking', ar: 'بنوك' },
+    metrics: [
+      { num: '+38%', label: 'Brand Recall' },
+      { num: '2.1B', label: 'Impressions' },
+      { num: '4x', label: 'App Downloads' },
+    ],
+    description: "A pan-Kingdom brand repositioning campaign that shifted Al Rajhi's perception from traditional bank to the bank of Saudi's next generation. We developed a full creative platform across TV, digital, OOH, and in-branch activation.",
+    fullDescription: "Al Rajhi Bank needed to connect with a younger audience while maintaining trust with its existing base. Our team developed \"The Future Is Ours\" — a multi-channel brand platform that positioned the bank as a forward-thinking institution rooted in tradition. The campaign spanned TV commercials, a complete digital ecosystem overhaul, 800+ OOH placements across the Kingdom, and in-branch experiential activations during Riyadh Season.",
+    challenge: "Shift the perception of a heritage bank to appeal to Saudi youth (18–34) without alienating the existing customer base.",
+    solution: "A dual-narrative campaign: heritage stories told through modern visual language, paired with youth-first digital activations on Snapchat, TikTok, and Twitter.",
+    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=900',
+    gallery: [
+      'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=900',
+    ],
+  },
+  {
+    id: 2,
+    slug: 'aldar-live-beyond',
+    title: 'ALDAR — LIVE BEYOND',
+    tag: 'Real Estate · UAE · 2023',
+    category: { en: 'Real Estate', ar: 'عقارات' },
+    metrics: [
+      { num: '+55%', label: 'Lead Generation' },
+      { num: '890M', label: 'Views (Digital)' },
+      { num: 'Cannes', label: 'Shortlisted' },
+    ],
+    description: "A cinematic campaign for Abu Dhabi's leading developer, reframing luxury living as an emotional and cultural aspiration. The campaign launched three major developments simultaneously across UAE, UK, and China.",
+    fullDescription: "Aldar Properties wanted to redefine what luxury real estate marketing looks like in the Middle East. We created \"Live Beyond\" — a cinematic brand world that moved past marble and gold clichés to focus on human stories, community, and cultural ambition. Three hero films launched simultaneously for Saadiyat Grove, Yas Acres, and Mamsha Al Saadiyat, each with its own visual identity yet united under a single emotional platform.",
+    challenge: "Launch three distinct mega-developments under one brand umbrella without diluting any individual project's identity.",
+    solution: "A modular creative system with shared typography and motion language, but unique color palettes and narrative tones per development.",
+    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=900',
+    gallery: [
+      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=900',
+    ],
+  },
+  {
+    id: 3,
+    slug: 'roadster-diner-still-here',
+    title: 'ROADSTER DINER — STILL HERE',
+    tag: 'FMCG · Lebanon · 2023',
+    category: { en: 'F&B', ar: 'أغذية ومشروبات' },
+    metrics: [
+      { num: '+200%', label: 'Franchise Inquiries' },
+      { num: '#1', label: 'Trending Lebanon' },
+      { num: 'Global', label: 'Media Coverage' },
+    ],
+    description: "A defiant brand survival campaign during Lebanon's economic crisis. Born from a social media conversation, the campaign became a national rallying cry — and drove a 200% increase in franchise inquiries despite the broader market collapse.",
+    fullDescription: "When Lebanon's economy collapsed, most brands went silent. Roadster Diner chose defiance. \"Still Here\" started as a single Instagram post responding to a customer asking if the brand was closing — and it became the most talked-about campaign in Lebanon that year. We turned the message into a full brand platform: billboards, limited-edition packaging, a documentary short, and a franchise expansion campaign targeting the Lebanese diaspora.",
+    challenge: "Maintain brand relevance and drive business growth during an unprecedented national economic crisis.",
+    solution: "Authentic, defiant storytelling that turned vulnerability into strength — meeting people where they were emotionally.",
+    image: 'https://images.unsplash.com/photo-1504707748692-419802cf939d?auto=format&fit=crop&q=80&w=900',
+    gallery: [
+      'https://images.unsplash.com/photo-1504707748692-419802cf939d?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&q=80&w=900',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=900',
+    ],
+  },
+]
+
+export const CASE_CATEGORIES = [
+  { en: 'All', ar: 'الكل' },
+  { en: 'Banking', ar: 'بنوك' },
+  { en: 'Real Estate', ar: 'عقارات' },
+  { en: 'F&B', ar: 'أغذية ومشروبات' },
+]
