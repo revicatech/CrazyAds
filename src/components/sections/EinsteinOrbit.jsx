@@ -85,22 +85,14 @@ export default function EinsteinOrbit() {
 
           <div className="einstein-glow" />
 
-          <svg className="einstein-head" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
-            <path d="M72,195 Q68,218 100,220 Q132,218 128,195 L122,175 Q100,185 78,175 Z" fill="#1a1a1a" stroke="rgba(220,0,0,0.15)" strokeWidth="1"/>
-            <ellipse cx="100" cy="100" rx="72" ry="78" fill="#1a1a1a" stroke="rgba(220,0,0,0.2)" strokeWidth="1.5"/>
-            <path d="M36,88 Q28,40 52,22 Q70,8 100,6 Q130,8 148,22 Q172,40 164,88" fill="#222" stroke="rgba(220,0,0,0.1)" strokeWidth="1"/>
-            <path d="M36,88 Q20,70 18,50 Q22,35 30,28" fill="none" stroke="rgba(220,0,0,0.3)" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M164,88 Q180,70 182,50 Q178,35 170,28" fill="none" stroke="rgba(220,0,0,0.3)" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M58,108 Q72,100 86,105" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M114,105 Q128,100 142,108" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round"/>
-            <ellipse cx="76" cy="118" rx="10" ry="12" fill="rgba(255,255,255,0.08)"/>
-            <ellipse cx="124" cy="118" rx="10" ry="12" fill="rgba(255,255,255,0.08)"/>
-            <circle cx="76" cy="118" r="4" fill="rgba(255,255,255,0.6)"/>
-            <circle cx="124" cy="118" r="4" fill="rgba(255,255,255,0.6)"/>
-            <path d="M88,148 Q100,160 112,148" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M75,88 Q80,80 86,83 Q80,86 82,92" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-            <path d="M125,83 Q131,80 136,88 Q134,86 130,89" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-          </svg>
+          <div className="einstein-3d-model">
+            <iframe
+              title="Einstein 3D Model"
+              allowFullScreen
+              allow="autoplay; fullscreen; xr-spatial-tracking"
+              src="https://sketchfab.com/models/42b4b7c2e73940acbea9c3d5646a70e1/embed?transparent=1&autostart=1&autospin=0.3&ui_hint=0&ui_theme=dark&ui_infos=0&ui_controls=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_annotations=0&ui_inspector=0&dnt=1&scrollwheel=0&camera=0"
+            />
+          </div>
 
           {IDEAS.map((idea, i) => (
             <div
