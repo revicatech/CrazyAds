@@ -35,6 +35,7 @@ export default function Team() {
   const { lang } = useLang()
   const { ref, isVisible } = useRevealOnScroll()
   const { data: TEAM } = useFetch(fetchTeam, TEAM_STATIC)
+  const Slice_team = TEAM.slice(0, 4) // Limit to first 4 members for now 
 
   return (
     <section id="team" className="py-24 px-6 max-w-[1400px] mx-auto">
@@ -49,7 +50,7 @@ export default function Team() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {TEAM.map((member, i) => (
+        {Slice_team.map((member, i) => (
           <TeamCard key={member._id} member={member} index={i} lang={lang} />
         ))}
       </div>
