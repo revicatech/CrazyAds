@@ -36,6 +36,7 @@ exports.create = [
     try {
       if (req.files?.image?.[0]) req.body.image = req.files.image[0].path;
       if (req.files?.gallery) req.body.gallery = req.files.gallery.map((f) => f.path);
+      if (typeof req.body.metrics === 'string') req.body.metrics = JSON.parse(req.body.metrics);
       const data = await CaseStudy.create(req.body);
       res.status(201).json({ success: true, data });
     } catch (err) {
@@ -60,6 +61,7 @@ exports.update = [
       if (req.files?.gallery) {
         req.body.gallery = [...(existing.gallery || []), ...req.files.gallery.map((f) => f.path)];
       }
+      if (typeof req.body.metrics === 'string') req.body.metrics = JSON.parse(req.body.metrics);
 
       const data = await CaseStudy.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
       res.json({ success: true, data });

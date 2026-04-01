@@ -6,6 +6,8 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
 // Route imports
+const authRoutes = require('./routes/authRoutes');
+const siteContentRoutes = require('./routes/siteContentRoutes');
 const caseStudyRoutes = require('./routes/caseStudyRoutes');
 const caseCategoryRoutes = require('./routes/caseCategoryRoutes');
 const industryRoutes = require('./routes/industryRoutes');
@@ -14,6 +16,7 @@ const portfolioCategoryRoutes = require('./routes/portfolioCategoryRoutes');
 const serviceRoutes = require('./routes/serviceRoutes');
 const teamRoutes = require('./routes/teamRoutes');
 const whyUsRoutes = require('./routes/whyUsRoutes');
+const eventRoutes = require('./routes/eventRoutes');
 
 // Connect to database
 connectDB();
@@ -27,6 +30,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 // Mount routes
+app.use('/api/auth', authRoutes);
+app.use('/api/site-content', siteContentRoutes);
 app.use('/api/case-studies', caseStudyRoutes);
 app.use('/api/case-categories', caseCategoryRoutes);
 app.use('/api/industries', industryRoutes);
@@ -35,6 +40,7 @@ app.use('/api/portfolio-categories', portfolioCategoryRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/team', teamRoutes);
 app.use('/api/why-us', whyUsRoutes);
+app.use('/api/events', eventRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

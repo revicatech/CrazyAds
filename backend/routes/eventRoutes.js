@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAll, getById, create, update, remove } = require('../controllers/serviceController');
+const { getAll, getById, create, update, remove } = require('../controllers/eventController');
 const { protect } = require('../middleware/auth');
 
 router.route('/').get(getAll).post(protect, create);

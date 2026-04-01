@@ -7,6 +7,7 @@ const serviceSchema = new mongoose.Schema({
   descEn:   { type: String },
   descAr:   { type: String },
   features: [{ type: String }],
+  image:    { type: String },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Service', serviceSchema);
