@@ -61,14 +61,6 @@ export default function Navbar() {
               {isAr ? 'EN' : 'AR'}
             </button>
 
-            {/* CTA — desktop */}
-            <a
-              href="/#contact-cta"
-              className="hidden xl:inline-flex items-center bg-brand-red text-white px-5 py-2 rounded-full text-sm font-semibold tracking-wide hover:bg-red-700 transition-colors"
-            >
-              {t('nav_cta', lang)}
-            </a>
-
             {/* Hamburger — mobile */}
             <button
               onClick={() => setMenuOpen(true)}

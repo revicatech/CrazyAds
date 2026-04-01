@@ -65,14 +65,7 @@ export default function MobileMenu({ open, onClose }) {
       </nav>
 
       {/* Bottom */}
-      <div className="px-8 pb-10 flex items-center justify-between">
-        <a
-          href="/#contact-cta"
-          onClick={onClose}
-          className="bg-brand-red text-white px-6 py-3 rounded-full font-semibold"
-        >
-          {t('nav_cta', lang)}
-        </a>
+      <div className="px-8 pb-10 flex items-center justify-end">
         <button
           onClick={toggleLang}
           className="text-white/60 hover:text-white text-sm tracking-widest border border-white/20 px-4 py-2 rounded-full transition-colors"

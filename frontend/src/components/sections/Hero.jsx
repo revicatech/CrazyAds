@@ -4,10 +4,9 @@ import { t } from '../../services/i18n'
 import { fetchSiteContent } from '../../services/api'
 import ParticleCanvas from '../animations/ParticleCanvas'
 import '../cssComponents/Hero.css'
-
 const DEFAULTS = {
   hero_title: 'CRAZY ADS',
-  hero_video_url: 'https://videos.pexels.com/video-files/1851190/1851190-hd_1920_1080_25fps.mp4',
+  hero_video_url: '/video.mp4',
   hero_poster_url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1920',
 }
 
