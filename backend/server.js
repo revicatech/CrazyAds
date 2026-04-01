@@ -6,6 +6,7 @@ const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
 // Route imports
+const uploadRoutes = require('./routes/uploadRoutes');
 const authRoutes = require('./routes/authRoutes');
 const siteContentRoutes = require('./routes/siteContentRoutes');
 const caseStudyRoutes = require('./routes/caseStudyRoutes');
@@ -30,6 +31,7 @@ app.use(express.urlencoded({ extended: true, limit: '4mb' }));
 app.use(morgan('dev'));
 
 // Mount routes
+app.use('/api/upload', uploadRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/site-content', siteContentRoutes);
 app.use('/api/case-studies', caseStudyRoutes);

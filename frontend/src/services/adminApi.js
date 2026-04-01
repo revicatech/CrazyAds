@@ -33,17 +33,46 @@ const crud = (resource) => ({
   remove: (id) => API.delete(`/${resource}/${id}`).then((r) => r.data),
 });
 
+// Upload a file directly to Cloudinary (avoids double-hop through Vercel)
+const uploadImageDirect = async (file) => {
+  const { timestamp, signature, apiKey, cloudName, folder } =
+    await API.get('/upload/sign').then((r) => r.data);
+  const fd = new FormData();
+  fd.append('file', file);
+  fd.append('timestamp', timestamp);
+  fd.append('signature', signature);
+  fd.append('api_key', apiKey);
+  fd.append('folder', folder);
+  const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+    method: 'POST',
+    body: fd,
+  });
+  const data = await res.json();
+  if (data.error) throw new Error(data.error.message);
+  return data.secure_url;
+};
+
+// Replaces any image File in a FormData with the Cloudinary URL before sending to backend
+const resolveImages = async (formData) => {
+  const imageFile = formData.get('image');
+  if (imageFile instanceof File) {
+    const url = await uploadImageDirect(imageFile);
+    formData.set('image', url);
+  }
+  return formData;
+};
+
 // FormData CRUD for models with image uploads
 const crudWithUpload = (resource) => ({
   ...crud(resource),
-  create: (formData) =>
-    API.post(`/${resource}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((r) => r.data.data),
-  update: (id, formData) =>
-    API.put(`/${resource}/${id}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }).then((r) => r.data.data),
+  create: async (formData) => {
+    await resolveImages(formData);
+    return API.post(`/${resource}`, formData).then((r) => r.data.data);
+  },
+  update: async (id, formData) => {
+    await resolveImages(formData);
+    return API.put(`/${resource}/${id}`, formData).then((r) => r.data.data);
+  },
 });
 
 export const servicesApi = crudWithUpload('services');
