@@ -49,12 +49,6 @@ export default function Contact() {
           >
             {t('contact_email_cta', lang)}
           </a>
-          <a
-            href="#"
-            className="border border-white/30 text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-white/10 transition-colors"
-          >
-            {t('contact_quote_cta', lang)}
-          </a>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full max-w-3xl">

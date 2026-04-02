@@ -372,12 +372,6 @@ export default function AboutPage() {
           <p className="text-white/40 text-sm md:text-base max-w-xl leading-relaxed">
             {t('about_cta_subtitle', lang)}
           </p>
-          <a
-            href="/#contact-cta"
-            className="inline-flex items-center bg-brand-red text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-red-700 transition-colors mt-2"
-          >
-            {t('nav_cta', lang)}
-          </a>
         </div>
       </section>
     </main>
