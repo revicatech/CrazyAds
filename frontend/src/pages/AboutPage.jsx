@@ -243,7 +243,7 @@ export default function AboutPage() {
   const { ref: storyRef, isVisible: storyVisible } = useRevealOnScroll()
   const { ref: teamRef, isVisible: teamVisible } = useRevealOnScroll()
   const { ref: whyRef, isVisible: whyVisible } = useRevealOnScroll()
-  const { data: TEAM } = useFetch(fetchTeam, TEAM_STATIC)
+  const { data: TEAM } = useFetch(fetchTeam, [])
   const { data: WHY_US } = useFetch(fetchWhyUs, WHY_US_STATIC)
   const [sc, setSc] = useState({})
   useEffect(() => { fetchSiteContent('about').then(setSc).catch(() => {}) }, [])
