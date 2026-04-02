@@ -246,7 +246,9 @@ export default function AboutPage() {
   const { data: TEAM } = useFetch(fetchTeam, [])
   const { data: WHY_US } = useFetch(fetchWhyUs, WHY_US_STATIC)
   const [sc, setSc] = useState({})
+  const [email, setEmail] = useState('hello@crazy-ads.com')
   useEffect(() => { fetchSiteContent('about').then(setSc).catch(() => {}) }, [])
+  useEffect(() => { fetchSiteContent('contact').then((d) => { if (d.contact_email) setEmail(d.contact_email) }).catch(() => {}) }, [])
 
   return (
     <main className="min-h-screen bg-white">
@@ -372,6 +374,12 @@ export default function AboutPage() {
           <p className="text-white/40 text-sm md:text-base max-w-xl leading-relaxed">
             {t('about_cta_subtitle', lang)}
           </p>
+          <a
+            href={`mailto:${email}`}
+            className="inline-flex items-center bg-brand-red text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-red-700 transition-colors"
+          >
+            {t('contact_email_cta', lang)}
+          </a>
         </div>
       </section>
     </main>
