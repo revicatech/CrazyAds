@@ -182,7 +182,7 @@ function OfficesMap({ lang }) {
 }
 
 /* ── Team Card ── */
-function TeamCard({ member, index }) {
+function TeamCard({ member, index, lang }) {
   const { ref, isVisible } = useRevealOnScroll(0.05)
 
   return (
@@ -200,7 +200,7 @@ function TeamCard({ member, index }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
       <h3 className="font-semibold text-brand-dark text-lg">{member.name}</h3>
-      <p className="text-black/50 text-sm mt-1">{member.role}</p>
+      <p className="text-black/50 text-sm mt-1">{t(member.roleKey, lang)}</p>
     </div>
   )
 }
@@ -358,7 +358,7 @@ export default function AboutPage() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {TEAM.map((member, i) => (
-            <TeamCard key={member._id} member={member} index={i} />
+            <TeamCard key={member._id} member={member} index={i} lang={lang} />
           ))}
         </div>
       </section>
