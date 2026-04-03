@@ -33,12 +33,31 @@ const crud = (resource) => ({
   remove: (id) => API.delete(`/${resource}/${id}`).then((r) => r.data),
 });
 
+// Compress and resize an image File in the browser before uploading
+const compressImage = (file) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const MAX = 1920;
+      const scale = img.width > MAX ? MAX / img.width : 1;
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * scale);
+      canvas.height = Math.round(img.height * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      canvas.toBlob((blob) => resolve(new File([blob], file.name, { type: 'image/webp' })), 'image/webp', 0.8);
+    };
+    img.src = url;
+  });
+
 // Upload a file directly to Cloudinary (avoids double-hop through Vercel)
 const uploadImageDirect = async (file) => {
+  const compressed = await compressImage(file);
   const { timestamp, signature, apiKey, cloudName, folder } =
     await API.get('/upload/sign').then((r) => r.data);
   const fd = new FormData();
-  fd.append('file', file);
+  fd.append('file', compressed);
   fd.append('timestamp', timestamp);
   fd.append('signature', signature);
   fd.append('api_key', apiKey);
