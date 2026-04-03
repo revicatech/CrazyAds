@@ -1,20 +1,30 @@
 const multer = require('multer');
 const { cloudinary } = require('../config/cloudinary');
 const streamifier = require('streamifier');
+const sharp = require('sharp');
 
 // Store files in memory — we upload to Cloudinary manually
 const storage = multer.memoryStorage();
 const upload = multer({ storage, limits: { fileSize: 10 * 1024 * 1024 } }); // 10 MB
 
+// Compress buffer with sharp before uploading
+const compressBuffer = (buffer) =>
+  sharp(buffer)
+    .resize({ width: 1920, withoutEnlargement: true })
+    .webp({ quality: 80 })
+    .toBuffer();
+
 // Upload a buffer to Cloudinary and return the secure URL
-const uploadToCloudinary = (buffer) =>
-  new Promise((resolve, reject) => {
+const uploadToCloudinary = async (buffer) => {
+  const compressed = await compressBuffer(buffer);
+  return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
       { folder: 'crazy-ads' },
       (err, result) => (err ? reject(err) : resolve(result.secure_url))
     );
-    streamifier.createReadStream(buffer).pipe(stream);
+    streamifier.createReadStream(compressed).pipe(stream);
   });
+};
 
 // Middleware: process uploaded files and replace buffer with Cloudinary URL
 const processImages = async (req, res, next) => {
