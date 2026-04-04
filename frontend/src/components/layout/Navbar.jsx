@@ -5,7 +5,7 @@ import { useLang } from '../../context/LanguageContext'
 import { t } from '../../services/i18n'
 import MobileMenu from './MobileMenu'
 import Button from '../ui/Button'
-
+import image from '../../assets/logo.png'
 const NAV_LINKS = [
   { key: 'nav_services',  to: '/services'      },
   { key: 'nav_portfolio', to: '/portfolio'     },
@@ -37,7 +37,7 @@ export default function Navbar() {
         <nav className="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="font-display text-2xl tracking-widest text-white">
-            CRAZY<span className="text-brand-red">ADS</span>
+            <img src={image} width="130" height="50" alt="Crazy Ads" />
           </Link>
 
           {/* Desktop links */}
