@@ -15,7 +15,7 @@ const FOOTER_COMPANY = [
 ]
 
 const FOOTER_CONTACT = [
-  { label: 'hello@crazy-ads.com', href: 'mailto:hello@crazy-ads.com' },
+  { label: 'info@crazy-ads.com', href: 'mailto:info@crazy-ads.com' },
   { label: 'www.crazy-ads.com',   href: '#' },
   { key: 'footer_location_dubai',     href: '#' },
   { key: 'footer_location_riyadh',    href: '#' },
