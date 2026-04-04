@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const caseStudySchema = new mongoose.Schema({
   slug:            { type: String, required: true, unique: true, index: true },
-  title:           { type: String, required: true },
-  tag:             { type: String },
+  title:           { en: String, ar: String },
+  tag:             { en: String, ar: String },
   category:        { en: String, ar: String },
-  metrics:         [{ num: String, label: String }],
-  description:     { type: String },
-  fullDescription: { type: String },
-  challenge:       { type: String },
-  solution:        { type: String },
+  metrics:         [{ num: String, label: { en: String, ar: String } }],
+  description:     { en: String, ar: String },
+  fullDescription: { en: String, ar: String },
+  challenge:       { en: String, ar: String },
+  solution:        { en: String, ar: String },
   image:           { type: String, required: false },
   gallery:         [{ type: String }],
 }, { timestamps: true });

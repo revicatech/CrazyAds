@@ -9,6 +9,7 @@ export const fetchCaseStudyBySlug = (slug) => API.get(`/case-studies/${slug}`).t
 export const fetchCaseCategories = () => API.get('/case-categories').then((r) => r.data.data);
 export const fetchIndustries = () => API.get('/industries').then((r) => r.data.data);
 export const fetchPortfolio = () => API.get('/portfolio').then((r) => r.data.data);
+export const fetchPortfolioBySlug = (slug) => API.get(`/portfolio/slug/${slug}`).then((r) => r.data.data);
 export const fetchPortfolioCategories = () => API.get('/portfolio-categories').then((r) => r.data.data);
 export const fetchServices = () => API.get('/services').then((r) => r.data.data);
 export const fetchTeam = () => API.get('/team').then((r) => r.data.data);

@@ -19,7 +19,7 @@ const uploadToCloudinary = async (buffer) => {
   const compressed = await compressBuffer(buffer);
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder: 'crazy-ads' },
+      { folder: 'crazy-ads', fetch_format: 'auto', quality: 'auto' },
       (err, result) => (err ? reject(err) : resolve(result.secure_url))
     );
     streamifier.createReadStream(compressed).pipe(stream);

@@ -36,6 +36,21 @@ const translations = {
     portfolio_page_subtitle: 'Browse our complete collection of work across industries — from restaurants and museums to real estate and events.',
     portfolio_filter_all: 'All',
 
+    // Portfolio Detail
+    portfolio_not_found:       'Project not found.',
+    portfolio_back:            '← All Projects',
+    portfolio_client:          'Client',
+    portfolio_year:            'Year',
+    portfolio_category_label:  'Category',
+    portfolio_services_label:  'Services',
+    portfolio_overview:        'Project Overview',
+    portfolio_gallery:         'Gallery',
+    portfolio_gallery_title:   'Visual Work',
+    portfolio_live_label:      'Live Project',
+    portfolio_live_title:      'See It in Action',
+    portfolio_live_cta:        'View Live Project',
+    portfolio_next:            'Next Project',
+
     // Case Studies
     cases_page_title:    'Case Studies',
     cases_page_subtitle: 'Deep dives into the campaigns that moved the needle — real strategy, real numbers, real results.',
@@ -243,6 +258,21 @@ const translations = {
     portfolio_page_title: 'أعمالنا',
     portfolio_page_subtitle: 'تصفّح مجموعتنا الكاملة من الأعمال عبر القطاعات — من المطاعم والمتاحف إلى العقارات والفعاليات.',
     portfolio_filter_all: 'الكل',
+
+    // Portfolio Detail
+    portfolio_not_found:       'المشروع غير موجود.',
+    portfolio_back:            '← كل الأعمال',
+    portfolio_client:          'العميل',
+    portfolio_year:            'السنة',
+    portfolio_category_label:  'التصنيف',
+    portfolio_services_label:  'الخدمات',
+    portfolio_overview:        'نظرة عامة',
+    portfolio_gallery:         'معرض',
+    portfolio_gallery_title:   'الأعمال البصرية',
+    portfolio_live_label:      'المشروع الحي',
+    portfolio_live_title:      'شاهده مباشرة',
+    portfolio_live_cta:        'عرض المشروع',
+    portfolio_next:            'المشروع التالي',
 
     // Case Studies
     cases_page_title:    'دراسات الحالة',

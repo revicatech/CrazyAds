@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useLang } from '../context/LanguageContext'
 import { t } from '../services/i18n'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
@@ -13,7 +14,8 @@ function PortfolioGridCard({ item, index }) {
   const { lang } = useLang()
 
   return (
-    <div
+    <Link
+      to={`/portfolio/${item.slug || item._id || item.id}`}
       ref={ref}
       className={`
         group relative overflow-hidden rounded-2xl bg-black cursor-pointer aspect-[4/5]
@@ -35,7 +37,7 @@ function PortfolioGridCard({ item, index }) {
       {/* Category pill — top-left */}
       <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 z-10">
         <span className="inline-block px-3 py-1 text-[10px] font-semibold tracking-widest uppercase rounded-full bg-brand-red text-white">
-          {lang === 'ar' ? item.category.ar : item.category.en}
+          {lang === 'ar' ? item.category?.ar : item.category?.en}
         </span>
       </div>
 
@@ -54,12 +56,12 @@ function PortfolioGridCard({ item, index }) {
           {lang === 'ar' ? item.titleAr : item.titleEn}
         </h3>
         <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-          {item.tags.map(tag => (
+          {(item.tags || []).map(tag => (
             <Badge key={tag} className="text-white/70 border-white/20 text-[10px]">{tag}</Badge>
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -117,7 +119,7 @@ export default function PortfolioPage() {
       <section className="px-6 pb-24 max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
           {filtered.map((item, i) => (
-            <PortfolioGridCard key={item._id} item={item} index={i} />
+            <PortfolioGridCard key={item._id || item.id} item={item} index={i} />
           ))}
         </div>
 

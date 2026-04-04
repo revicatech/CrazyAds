@@ -1,6 +1,7 @@
 export const PORTFOLIO = [
   {
     id: 1,
+    slug: 'advertising-with-edge',
     titleEn: 'Advertising with edge',
     titleAr: 'إعلان بحدّة',
     category: { en: 'Restaurant', ar: 'مطعم' },
@@ -10,6 +11,7 @@ export const PORTFOLIO = [
   },
   {
     id: 2,
+    slug: 'experiential-design',
     titleEn: 'Experiential design',
     titleAr: 'تصميم تجريبي',
     category: { en: 'Museum', ar: 'متحف' },
@@ -19,6 +21,7 @@ export const PORTFOLIO = [
   },
   {
     id: 3,
+    slug: 'visionary-designs',
     titleEn: 'Visionary designs',
     titleAr: 'تصاميم استشرافية',
     category: { en: 'Real Estate', ar: 'عقارات' },
@@ -28,6 +31,7 @@ export const PORTFOLIO = [
   },
   {
     id: 4,
+    slug: 'event-experience',
     titleEn: 'Event experience',
     titleAr: 'تجربة الفعاليات',
     category: { en: 'Events', ar: 'فعاليات' },
@@ -37,6 +41,7 @@ export const PORTFOLIO = [
   },
   {
     id: 5,
+    slug: 'creative-visions',
     titleEn: 'Creative visions',
     titleAr: 'رؤى إبداعية',
     category: { en: 'Healthcare', ar: 'رعاية صحية' },
@@ -46,6 +51,7 @@ export const PORTFOLIO = [
   },
   {
     id: 6,
+    slug: 'urban-dining',
     titleEn: 'Urban dining',
     titleAr: 'تجربة طعام حضرية',
     category: { en: 'Restaurant', ar: 'مطعم' },
@@ -55,6 +61,7 @@ export const PORTFOLIO = [
   },
   {
     id: 7,
+    slug: 'heritage-gallery',
     titleEn: 'Heritage gallery',
     titleAr: 'معرض التراث',
     category: { en: 'Museum', ar: 'متحف' },
@@ -64,6 +71,7 @@ export const PORTFOLIO = [
   },
   {
     id: 8,
+    slug: 'skyline-towers',
     titleEn: 'Skyline towers',
     titleAr: 'أبراج الأفق',
     category: { en: 'Real Estate', ar: 'عقارات' },
@@ -73,6 +81,7 @@ export const PORTFOLIO = [
   },
   {
     id: 9,
+    slug: 'gala-night',
     titleEn: 'Gala night',
     titleAr: 'ليلة الحفل',
     category: { en: 'Events', ar: 'فعاليات' },
@@ -82,6 +91,7 @@ export const PORTFOLIO = [
   },
   {
     id: 10,
+    slug: 'wellness-rebrand',
     titleEn: 'Wellness rebrand',
     titleAr: 'إعادة بناء العلامة الصحية',
     category: { en: 'Healthcare', ar: 'رعاية صحية' },
@@ -91,6 +101,7 @@ export const PORTFOLIO = [
   },
   {
     id: 11,
+    slug: 'tech-launch',
     titleEn: 'Tech launch',
     titleAr: 'إطلاق تقني',
     category: { en: 'Technology', ar: 'تكنولوجيا' },
@@ -100,6 +111,7 @@ export const PORTFOLIO = [
   },
   {
     id: 12,
+    slug: 'fashion-forward',
     titleEn: 'Fashion forward',
     titleAr: 'أزياء متقدمة',
     category: { en: 'Fashion', ar: 'أزياء' },
@@ -109,6 +121,7 @@ export const PORTFOLIO = [
   },
   {
     id: 13,
+    slug: 'cafe-culture',
     titleEn: 'Café culture',
     titleAr: 'ثقافة المقهى',
     category: { en: 'Restaurant', ar: 'مطعم' },
@@ -118,6 +131,7 @@ export const PORTFOLIO = [
   },
   {
     id: 14,
+    slug: 'art-district',
     titleEn: 'Art district',
     titleAr: 'حي الفنون',
     category: { en: 'Museum', ar: 'متحف' },
@@ -127,6 +141,7 @@ export const PORTFOLIO = [
   },
   {
     id: 15,
+    slug: 'luxury-living',
     titleEn: 'Luxury living',
     titleAr: 'حياة فاخرة',
     category: { en: 'Real Estate', ar: 'عقارات' },
@@ -136,6 +151,7 @@ export const PORTFOLIO = [
   },
   {
     id: 16,
+    slug: 'summit-2026',
     titleEn: 'Summit 2026',
     titleAr: 'قمة 2026',
     category: { en: 'Events', ar: 'فعاليات' },

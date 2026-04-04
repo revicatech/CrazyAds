@@ -4,6 +4,7 @@ import Home         from './pages/Home'
 import AboutPage    from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import PortfolioPage     from './pages/PortfolioPage'
+import PortfolioDetail   from './pages/PortfolioDetail'
 import CaseStudiesPage   from './pages/CaseStudiesPage'
 import CaseStudyDetail   from './pages/CaseStudyDetail'
 import IndustriesPage    from './pages/IndustriesPage'
@@ -34,7 +35,8 @@ const router = createBrowserRouter([
       { index: true,          element: <Home /> },
       { path: 'about',        element: <AboutPage /> },
       { path: 'services',     element: <ServicesPage /> },
-      { path: 'portfolio',    element: <PortfolioPage /> },
+      { path: 'portfolio',          element: <PortfolioPage /> },
+      { path: 'portfolio/:slug',    element: <PortfolioDetail /> },
       { path: 'case-studies',        element: <CaseStudiesPage /> },
       { path: 'case-studies/:slug',  element: <CaseStudyDetail /> },
       { path: 'industries',    element: <IndustriesPage /> },

@@ -118,11 +118,21 @@ export default function Taglines() {
 
   const clients = Array.isArray(sc.client_list) && sc.client_list.length > 0 ? sc.client_list : DEFAULT_CLIENTS
 
+  const splitArLine = (text) => {
+    const i = text.lastIndexOf(' ')
+    return i >= 0
+      ? { text: text.slice(0, i + 1), red: text.slice(i + 1) }
+      : { text, red: null }
+  }
+
+  const arLine2 = sc.tagline_2_ar || 'نحن نصنع الهوس.'
+  const arLine3 = sc.tagline_3_ar || 'علامتك تستحق الجنون.'
+
   const taglines = lang === 'ar'
     ? [
         { text: sc.tagline_1_ar || 'لا نتبع الاتجاهات —', red: null },
-        { text: (sc.tagline_2_ar || 'نحن نصنع الهوس.').replace(/الهوس\.$/, 'نحن نصنع '), red: 'الهوس.' },
-        { text: (sc.tagline_3_ar || 'علامتك تستحق الجنون.').replace(/الجنون\.$/, 'علامتك تستحق '), red: 'الجنون.' },
+        splitArLine(arLine2),
+        splitArLine(arLine3),
       ]
     : [
         { text: sc.tagline_1_en || "WE DON'T FOLLOW TRENDS —", red: null },

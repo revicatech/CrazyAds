@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useLang } from '../../context/LanguageContext'
+
 import { t } from '../../services/i18n'
 import { useRevealOnScroll } from '../../hooks/useRevealOnScroll'
 import SectionHeading from '../ui/SectionHeading'
@@ -14,7 +15,8 @@ function PortfolioCard({ item, index }) {
   const isLarge  = index === 0 || index === 3
 
   return (
-    <div
+    <Link
+      to={`/portfolio/${item.slug || item._id || item.id}`}
       ref={ref}
       className={`
         group relative overflow-hidden rounded-2xl bg-black cursor-pointer
@@ -37,7 +39,7 @@ function PortfolioCard({ item, index }) {
       {/* Category pill */}
       <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4">
         <span className="inline-block px-3 py-1 text-[10px] font-semibold tracking-widest uppercase rounded-full bg-brand-red text-white">
-          {lang === 'ar' ? item.category.ar : item.category.en}
+          {lang === 'ar' ? item.category?.ar : item.category?.en}
         </span>
       </div>
 
@@ -54,12 +56,12 @@ function PortfolioCard({ item, index }) {
           {lang === 'ar' ? item.titleAr : item.titleEn}
         </h3>
         <div className="flex flex-wrap gap-2">
-          {item.tags.map(tag => (
+          {(item.tags || []).map(tag => (
             <Badge key={tag} className="text-white/70 border-white/20 text-[10px]">{tag}</Badge>
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 

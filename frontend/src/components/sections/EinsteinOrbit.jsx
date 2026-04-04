@@ -78,7 +78,7 @@ export default function EinsteinOrbit() {
 
         {/* Orbit scene — RIGHT */}
         <div className="flex-1 flex justify-center items-center">
-        <div className="orbit-scene" ref={sceneRef}>
+        <div className="orbit-scene" ref={sceneRef} dir="ltr">
           <div className="orbit-ring orbit-ring-1" />
           <div className="orbit-ring orbit-ring-2" />
           <div className="orbit-ring orbit-ring-3" />

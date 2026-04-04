@@ -96,7 +96,18 @@ const crudWithUpload = (resource) => ({
 
 export const servicesApi = crudWithUpload('services');
 export const industriesApi = crudWithUpload('industries');
-export const portfolioApi = crudWithUpload('portfolio');
+
+// Exposed so the portfolio admin page can upload images before sending JSON
+export { uploadImageDirect };
+
+// Portfolio sends plain JSON (images are pre-uploaded to Cloudinary).
+// This bypasses multipart/form-data parsing entirely and avoids all
+// bracket-notation / Multer issues.
+export const portfolioApi = {
+  ...crud('portfolio'),
+  create: (payload) => API.post('/portfolio', payload).then((r) => r.data.data),
+  update: (id, payload) => API.put(`/portfolio/${id}`, payload).then((r) => r.data.data),
+};
 export const portfolioCategoriesApi = crud('portfolio-categories');
 export const caseStudiesApi = crudWithUpload('case-studies');
 export const caseCategoriesApi = crud('case-categories');

@@ -10,9 +10,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 72px 0;
-  overflow: hidden;
+  padding: 80px 72px 80px;
+  overflow-x: clip;
+  overflow-y: visible;
 }
+
 
 /* big faded watermark behind text */
 .taglines::before {
@@ -41,8 +43,21 @@
   transform: translateX(-12px);
 }
 
+[dir="rtl"] .taglines {
+  height: auto;
+  min-height: 120vh;
+}
+
+[dir="rtl"] .tagline-line {
+  transform: translateX(12px);
+}
+
 .tagline-line.active {
   color: #111111;
+  transform: translateX(0);
+}
+
+[dir="rtl"] .tagline-line.active {
   transform: translateX(0);
 }
 
@@ -61,6 +76,7 @@
   margin-top: 80px;
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
 }
 
 .counter-item {
@@ -87,6 +103,10 @@
   text-transform: uppercase;
   color: #999999;
   margin-top: 10px;
+}
+
+[dir="rtl"] .counter-label {
+  letter-spacing: 0;
 }
 
 /* ═══════ CLIENTS MARQUEE ═══════ */
