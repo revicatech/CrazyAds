@@ -349,16 +349,47 @@
   .lang-ar .hero-content {
     padding: 0 24px 60px;
   }
+
+  .lang-ar .hero-title {
+    font-size: clamp(48px, 10vw, 120px);
+  }
+
+  .lang-ar .hero-eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .lang-ar .hero-bottom {
+    margin-top: 16px;
+    gap: 10px;
+  }
+
+  .lang-ar .hero-sub {
+    font-size: 13px;
+    line-height: 1.55;
+  }
 }
 
 @media (max-width: 768px) {
   .lang-ar .hero-content {
     padding: 0 20px 48px;
   }
+
+  .lang-ar .hero-title {
+    font-size: clamp(44px, 10vw, 100px);
+  }
 }
 
 @media (max-width: 480px) {
   .lang-ar .hero-content {
     padding: 0 16px 40px;
+  }
+
+  .lang-ar .hero-title {
+    font-size: clamp(38px, 12vw, 64px);
+  }
+
+  .lang-ar .hero-sub {
+    font-size: 12px;
+    line-height: 1.5;
   }
 }
