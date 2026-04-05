@@ -50,6 +50,8 @@
 
 [dir="rtl"] .tagline-line {
   transform: translateX(12px);
+  margin-bottom: 24px;
+  font-size: clamp(48px, 7vw, 100px);
 }
 
 .tagline-line.active {

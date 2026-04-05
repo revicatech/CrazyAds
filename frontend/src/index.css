@@ -1,5 +1,13 @@
 @import './styles/animations.css';
 
+@font-face {
+  font-family: 'Montserrat Arabic';
+  src: url('./assets/Montserrat-Arabic-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,6 +33,6 @@
 
   [dir="rtl"] body,
   [dir="rtl"] * {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Montserrat Arabic', 'Cairo', sans-serif;
   }
 }

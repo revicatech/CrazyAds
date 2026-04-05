@@ -265,17 +265,6 @@ export default function PortfolioDetail() {
     return next && next._id !== item._id ? next : null
   })()
 
-  /* Gallery layout pattern (12-col grid spans) */
-  const gallerySpans = [
-    'md:col-span-12 aspect-[21/8]',
-    'md:col-span-7 aspect-[4/3]',
-    'md:col-span-5 aspect-[4/3]',
-    'md:col-span-5 aspect-[4/3]',
-    'md:col-span-7 aspect-[4/3]',
-    'md:col-span-4 aspect-square',
-    'md:col-span-4 aspect-square',
-    'md:col-span-4 aspect-square',
-  ]
 
   return (
     <>
@@ -432,8 +421,8 @@ export default function PortfolioDetail() {
               <span className="text-black/25 text-sm font-mono">{gallery.length} images</span>
             </Reveal>
 
-            {/* Masonry-inspired 12-col grid */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
+            {/* 4-column grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {gallery.map((img, i) => (
                 <GalleryItem
                   key={i}
@@ -441,7 +430,7 @@ export default function PortfolioDetail() {
                   alt={`${title} — ${i + 1}`}
                   index={i}
                   onClick={openLightbox}
-                  className={gallerySpans[i % gallerySpans.length]}
+                  className="aspect-square"
                 />
               ))}
             </div>
