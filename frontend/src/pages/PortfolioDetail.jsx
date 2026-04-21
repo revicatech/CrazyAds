@@ -131,7 +131,7 @@ function GalleryItem({ src, alt, index, onClick, className = '' }) {
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
       />
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-400 flex items-center justify-center">
@@ -421,8 +421,8 @@ export default function PortfolioDetail() {
               <span className="text-black/25 text-sm font-mono">{gallery.length} images</span>
             </Reveal>
 
-            {/* 4-column grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {/* Full-width vertical stack */}
+            <div className="flex flex-col gap-6 md:gap-8">
               {gallery.map((img, i) => (
                 <GalleryItem
                   key={i}
@@ -430,7 +430,7 @@ export default function PortfolioDetail() {
                   alt={`${title} — ${i + 1}`}
                   index={i}
                   onClick={openLightbox}
-                  className="aspect-square"
+                  className="w-full"
                 />
               ))}
             </div>

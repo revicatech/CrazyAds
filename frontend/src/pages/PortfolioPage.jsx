@@ -24,12 +24,17 @@ function PortfolioGridCard({ item, index }) {
       `}
       style={{ transitionDelay: `${index * 60}ms` }}
     >
-      {/* Image */}
-      <img
-        src={item.image}
-        alt={item.titleEn}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-      />
+      {/* Image — uses mobile-specific cover on small screens if available */}
+      <picture className="absolute inset-0 w-full h-full">
+        {item.mobileImage && (
+          <source media="(max-width: 640px)" srcSet={item.mobileImage} />
+        )}
+        <img
+          src={item.image}
+          alt={item.titleEn}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+        />
+      </picture>
 
       {/* Overlay — darkens on hover */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />

@@ -33,6 +33,9 @@ const portfolioSchema = new mongoose.Schema({
   // Cover / thumbnail image
   image:          { type: String },
 
+  // Mobile-specific cover image (shown on small screens; falls back to image)
+  mobileImage:    { type: String },
+
   // Additional project images
   gallery:        [{ type: String }],
 

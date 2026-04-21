@@ -100,6 +100,12 @@ exports.update = async (req, res, next) => {
       if (publicId) await cloudinary.uploader.destroy(publicId).catch(() => {});
     }
 
+    // If the mobile cover image was replaced, clean up old Cloudinary asset
+    if (body.mobileImage && body.mobileImage !== existing.mobileImage) {
+      const publicId = extractPublicId(existing.mobileImage);
+      if (publicId) await cloudinary.uploader.destroy(publicId).catch(() => {});
+    }
+
     const data = await Portfolio.findByIdAndUpdate(
       req.params.id,
       body,

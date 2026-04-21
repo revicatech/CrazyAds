@@ -43,9 +43,10 @@ export default function PortfolioPage() {
   const [saving, setSaving]       = useState(false)
 
   // Image state
-  const [imageFile, setImageFile]     = useState(null)
-  const [galleryFiles, setGalleryFiles] = useState([])     // new files to add
-  const [galleryUrls, setGalleryUrls] = useState([])       // existing URLs
+  const [imageFile, setImageFile]         = useState(null)
+  const [mobileImageFile, setMobileImageFile] = useState(null)
+  const [galleryFiles, setGalleryFiles]   = useState([])     // new files to add
+  const [galleryUrls, setGalleryUrls]     = useState([])       // existing URLs
 
   const load = () =>
     Promise.all([portfolioApi.getAll(), portfolioCategoriesApi.getAll()])
@@ -64,6 +65,7 @@ export default function PortfolioPage() {
     setEditing(null)
     setForm(empty)
     setImageFile(null)
+    setMobileImageFile(null)
     setGalleryFiles([])
     setGalleryUrls([])
     setModal(true)
@@ -91,6 +93,7 @@ export default function PortfolioPage() {
       featured:      row.featured || false,
     })
     setImageFile(null)
+    setMobileImageFile(null)
     setGalleryFiles([])
     setGalleryUrls(row.gallery || [])
     setModal(true)
@@ -111,6 +114,12 @@ export default function PortfolioPage() {
       let imageUrl = editing ? items.find((i) => i._id === editing)?.image : undefined
       if (imageFile) {
         imageUrl = await uploadImageDirect(imageFile)
+      }
+
+      // 1b. Upload mobile cover image if a new file was selected
+      let mobileImageUrl = editing ? items.find((i) => i._id === editing)?.mobileImage : undefined
+      if (mobileImageFile) {
+        mobileImageUrl = await uploadImageDirect(mobileImageFile)
       }
 
       // 2. Upload any new gallery files; keep existing URLs as-is
@@ -139,6 +148,7 @@ export default function PortfolioPage() {
         gallery:       allGallery,
       }
       if (imageUrl) payload.image = imageUrl
+      if (mobileImageUrl) payload.mobileImage = mobileImageUrl
       console.log(payload);
       
       if (editing) {
@@ -348,9 +358,15 @@ export default function PortfolioPage() {
           <FormSection title="Images" />
 
           <AdminImageUpload
-            label="Cover Image"
+            label="Cover Image (Desktop)"
             currentUrl={editing ? items.find((i) => i._id === editing)?.image : null}
             onFileSelect={(f) => setImageFile(f)}
+          />
+
+          <AdminImageUpload
+            label="Cover Image (Mobile) — optional, shown on small screens"
+            currentUrl={editing ? items.find((i) => i._id === editing)?.mobileImage : null}
+            onFileSelect={(f) => setMobileImageFile(f)}
           />
 
           {/* Gallery */}
